@@ -2,7 +2,7 @@
 
 export const Button = ({ children, className = '', variant = 'primary', loading = false, ...props }) => {
     const variants = {
-        primary: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90',
+        primary: 'premium-btn-primary text-white',
         secondary: 'bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:bg-[var(--muted)]',
         ghost: 'bg-transparent text-[var(--muted-foreground)] hover:bg-[var(--secondary)] hover:text-[var(--foreground)]',
         outline: 'bg-transparent border border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]'
@@ -30,7 +30,7 @@ export const Input = ({ label, className = '', ...props }) => (
     <div className="w-full space-y-1.5">
         {label && <label className="text-sm font-medium text-[var(--muted-foreground)] ml-1">{label}</label>}
         <input 
-            className={`w-full px-4 py-2 bg-[var(--card)] border border-[var(--border)] rounded-lg text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all ${className}`} 
+            className={`w-full px-4 py-2 premium-input rounded-lg text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none transition-all ${className}`} 
             {...props} 
         />
     </div>

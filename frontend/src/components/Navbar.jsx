@@ -40,7 +40,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-slate-200 dark:border-gray-800 px-6 py-3 transition-colors">
+        <nav className="sticky top-0 z-50 bg-[var(--card-glass)] backdrop-blur-lg border-b border-[var(--border-glass)] px-6 py-3 transition-colors">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-2 group">
                     <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
