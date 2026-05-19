@@ -2,33 +2,35 @@ import { Briefcase, ShieldCheck, Award, Cpu, Globe, Compass, FileText, CheckCirc
 
 const FloatingBackground = () => {
     const items = [
-        { Icon: Briefcase, className: "top-[15%] left-[8%] animate-float-1 text-indigo-500", size: 48 },
-        { Icon: ShieldCheck, className: "top-[25%] right-[12%] animate-float-2 text-emerald-500", size: 54 },
-        { Icon: Award, className: "bottom-[20%] left-[10%] animate-float-3 text-amber-500", size: 44 },
-        { Icon: Cpu, className: "bottom-[30%] right-[15%] animate-float-1 text-purple-500", size: 50 },
-        { Icon: Globe, className: "top-[45%] left-[15%] animate-float-2 text-blue-500", size: 40 },
-        { Icon: Compass, className: "top-[60%] right-[8%] animate-float-3 text-rose-500", size: 46 },
-        { Icon: FileText, className: "top-[80%] left-[20%] animate-float-1 text-teal-500", size: 42 },
-        { Icon: CheckCircle, className: "bottom-[45%] left-[5%] animate-float-2 text-emerald-500", size: 38 },
-        { Icon: Briefcase, className: "top-[5%] right-[25%] animate-float-3 text-indigo-500", size: 36 },
-        { Icon: ShieldCheck, className: "bottom-[10%] right-[30%] animate-float-1 text-indigo-500", size: 46 }
+        { Icon: Briefcase, className: "top-[12%] left-[8%] animate-float-1 text-indigo-500", depth: "depth-near", size: 48 },
+        { Icon: ShieldCheck, className: "top-[22%] right-[10%] animate-float-2 text-emerald-500", depth: "depth-mid", size: 54 },
+        { Icon: Award, className: "bottom-[20%] left-[8%] animate-float-3 text-amber-500", depth: "depth-far", size: 44 },
+        { Icon: Cpu, className: "bottom-[28%] right-[12%] animate-float-1 text-purple-500", depth: "depth-near", size: 50 },
+        { Icon: Globe, className: "top-[40%] left-[12%] animate-float-2 text-blue-500", depth: "depth-far", size: 40 },
+        { Icon: Compass, className: "top-[55%] right-[6%] animate-float-3 text-rose-500", depth: "depth-mid", size: 46 },
+        { Icon: FileText, className: "top-[75%] left-[16%] animate-float-1 text-teal-500", depth: "depth-mid", size: 42 },
+        { Icon: CheckCircle, className: "bottom-[40%] left-[4%] animate-float-2 text-emerald-500", depth: "depth-near", size: 38 },
+        { Icon: Briefcase, className: "top-[4%] right-[22%] animate-float-3 text-indigo-500", depth: "depth-far", size: 36 },
+        { Icon: ShieldCheck, className: "bottom-[8%] right-[25%] animate-float-1 text-indigo-500", depth: "depth-mid", size: 46 }
     ];
 
     return (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none perspective-container preserve-3d">
             {/* Soft Ambient Glows */}
-            <div className="absolute top-[20%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-indigo-400/5 dark:bg-indigo-500/5 blur-[120px]" />
-            <div className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] rounded-full bg-emerald-400/3 dark:bg-emerald-500/3 blur-[140px]" />
+            <div className="absolute top-[20%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-indigo-400/5 dark:bg-indigo-500/5 blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] rounded-full bg-emerald-400/3 dark:bg-emerald-500/3 blur-[140px] pointer-events-none" />
             
-            {/* Animated Icons */}
+            {/* Animated 3D Icons */}
             {items.map((item, idx) => {
-                const { Icon, className, size } = item;
+                const { Icon, className, depth, size } = item;
                 return (
                     <div 
                         key={idx} 
-                        className={`absolute opacity-[0.03] dark:opacity-[0.07] hover:opacity-[0.15] dark:hover:opacity-[0.2] transition-opacity duration-700 ${className}`}
+                        className={`absolute opacity-[0.03] dark:opacity-[0.07] hover:opacity-[0.15] dark:hover:opacity-[0.2] transition-opacity duration-700 preserve-3d ${className}`}
                     >
-                        <Icon size={size} strokeWidth={1.5} />
+                        <div className={`${depth} transition-transform duration-500`}>
+                            <Icon size={size} strokeWidth={1.5} />
+                        </div>
                     </div>
                 );
             })}
