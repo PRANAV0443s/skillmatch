@@ -7,6 +7,7 @@ const Register = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '', role: 'CANDIDATE' });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isTransitioning, setIsTransitioning] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,8 +23,10 @@ const Register = () => {
         setError('');
         try {
             await axios.post('http://localhost:8080/api/auth/register', form);
-            alert('Registration successful! Please login.');
-            navigate('/login');
+            setIsTransitioning(true);
+            setTimeout(() => {
+                navigate('/login');
+            }, 1000);
         } catch (error) {
             console.error('Registration error:', error);
             const rawMsg = error.response?.data?.message || 
@@ -38,6 +41,20 @@ const Register = () => {
 
     return (
         <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-transparent py-12 transition-colors">
+            {isTransitioning && (
+                <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--card-glass)] backdrop-blur-2xl transition-all duration-700 ease-out animate-fade-in">
+                    <div className="flex flex-col items-center space-y-6 animate-scale-up">
+                        <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl shadow-emerald-500/30 animate-pulse">
+                            ✓
+                        </div>
+                        <div className="flex flex-col items-center space-y-2">
+                            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Profile Created!</h3>
+                            <p className="text-sm text-slate-500 dark:text-slate-400">Taking you to sign in page</p>
+                        </div>
+                        <div className="w-8 h-8 border-3 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                </div>
+            )}
             <Card className="w-full max-w-md p-8 sm:p-10">
                 <div className="flex flex-col items-center mb-8">
                     <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-indigo-200">

@@ -78,7 +78,7 @@ const DashboardCandidate = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6 sm:p-10 space-y-10">
+        <div className="max-w-6xl mx-auto p-6 sm:p-10 space-y-10 animate-slide-up">
             <header>
                 <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-100">SkillMatch Dashboard</h1>
                 <p className="text-slate-500 dark:text-slate-400 mt-2">Manage your verified profile and discover matching opportunities.</p>

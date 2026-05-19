@@ -8,6 +8,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isTransitioning, setIsTransitioning] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,8 +27,11 @@ const Login = () => {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('role', res.data.role);
             localStorage.setItem('name', res.data.name);
-            if(res.data.role === 'CANDIDATE') navigate('/candidate');
-            else navigate('/employer');
+            setIsTransitioning(true);
+            setTimeout(() => {
+                if(res.data.role === 'CANDIDATE') navigate('/candidate');
+                else navigate('/employer');
+            }, 1000);
         } catch (error) {
             setError(error.response?.data || 'Connection failed. Please try again.');
         } finally {
@@ -37,6 +41,20 @@ const Login = () => {
 
     return (
         <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-transparent transition-colors">
+            {isTransitioning && (
+                <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--card-glass)] backdrop-blur-2xl transition-all duration-700 ease-out animate-fade-in">
+                    <div className="flex flex-col items-center space-y-6 animate-scale-up">
+                        <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl shadow-indigo-500/30 animate-pulse">
+                            S
+                        </div>
+                        <div className="flex flex-col items-center space-y-2">
+                            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Securing Session...</h3>
+                            <p className="text-sm text-slate-500 dark:text-slate-400">Verifying blockchain identity</p>
+                        </div>
+                        <div className="w-8 h-8 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                </div>
+            )}
             <Card className="w-full max-w-md p-8 sm:p-10">
                 <div className="flex flex-col items-center mb-8">
                     <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-indigo-200">

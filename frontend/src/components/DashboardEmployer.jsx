@@ -40,7 +40,7 @@ const DashboardEmployer = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6 sm:p-10 space-y-10">
+        <div className="max-w-6xl mx-auto p-6 sm:p-10 space-y-10 animate-slide-up">
             <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-100">Employer Console</h1>
