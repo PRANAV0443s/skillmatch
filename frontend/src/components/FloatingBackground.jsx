@@ -16,9 +16,10 @@ const FloatingBackground = () => {
 
     return (
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none perspective-container preserve-3d">
-            {/* Soft Ambient Glows */}
-            <div className="absolute top-[20%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-indigo-400/5 dark:bg-indigo-500/5 blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] rounded-full bg-emerald-400/3 dark:bg-emerald-500/3 blur-[140px] pointer-events-none" />
+            {/* Organic iOS-like Liquid Morphing Blobs */}
+            <div className="absolute top-[-15%] left-[-15%] w-[60vw] h-[60vw] bg-gradient-to-tr from-indigo-500/18 via-purple-500/12 to-pink-500/8 blur-[100px] liquid-blob-1 pointer-events-none" />
+            <div className="absolute bottom-[-15%] right-[-15%] w-[65vw] h-[65vw] bg-gradient-to-br from-emerald-500/12 via-teal-500/12 to-cyan-500/8 blur-[120px] liquid-blob-2 pointer-events-none" />
+            <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-gradient-to-l from-rose-500/10 via-amber-500/8 to-orange-500/6 blur-[110px] liquid-blob-3 pointer-events-none" />
             
             {/* Animated 3D Icons */}
             {items.map((item, idx) => {
