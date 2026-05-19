@@ -2,14 +2,19 @@
   "name": "job-finder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "dotenv -e .env -- concurrently \"cd backend && mvnw spring-boot:run\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
   "devDependencies": {
     "concurrently": "^9.2.1",
     "dotenv-cli": "^11.0.0"
