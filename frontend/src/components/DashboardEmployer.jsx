@@ -43,14 +43,14 @@ const DashboardEmployer = () => {
         <div className="max-w-6xl mx-auto p-6 sm:p-10 space-y-10">
             <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-4xl font-bold text-slate-800">Employer Console</h1>
-                    <p className="text-slate-500 mt-2">Post new opportunities and manage your talent pool.</p>
+                    <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-100">Employer Console</h1>
+                    <p className="text-slate-500 dark:text-slate-400 mt-2">Post new opportunities and manage your talent pool.</p>
                 </div>
             </header>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <Card className="lg:col-span-1 h-fit">
-                    <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
                         <PlusCircle size={20} className="text-indigo-500" /> Post a Job
                     </h2>
                     <form onSubmit={handlePostJob} className="space-y-5">
@@ -69,12 +69,12 @@ const DashboardEmployer = () => {
                             required 
                         />
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1.5 ml-1">Description</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 ml-1">Description</label>
                             <textarea 
                                 placeholder="Describe the role, responsibilities, and requirements..." 
                                 value={form.description} 
                                 onChange={(e)=>setForm({...form, description: e.target.value})} 
-                                className="w-full px-4 py-2.5 premium-card premium-input border-slate-200 text-slate-800 focus:outline-none min-h-[120px] resize-none"
+                                className="w-full px-4 py-2.5 premium-card premium-input border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 focus:outline-none min-h-[120px] resize-none bg-white dark:bg-slate-800"
                                 required
                             ></textarea>
                         </div>
@@ -86,16 +86,16 @@ const DashboardEmployer = () => {
 
                 <div className="lg:col-span-2 space-y-6">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                        <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                             <Briefcase size={20} className="text-indigo-500" /> Active Listings
                         </h2>
                         <Badge variant="info">{jobs.length} Jobs Total</Badge>
                     </div>
 
                     {jobs.length === 0 ? (
-                        <Card className="py-20 text-center bg-slate-50/50 border-dashed border-2">
-                            <Search size={48} className="mx-auto text-slate-300 mb-4" />
-                            <p className="text-slate-500 italic">No jobs posted yet. Start by creating your first listing.</p>
+                        <Card className="py-20 text-center bg-slate-50/50 dark:bg-slate-800/30 border-dashed border-2 dark:border-slate-700">
+                            <Search size={48} className="mx-auto text-slate-300 dark:text-slate-600 mb-4" />
+                            <p className="text-slate-500 dark:text-slate-400 italic">No jobs posted yet. Start by creating your first listing.</p>
                         </Card>
                     ) : (
                         <div className="grid gap-4">
@@ -103,8 +103,8 @@ const DashboardEmployer = () => {
                                 <Card key={job.id} className="hover:border-indigo-100 transition-colors">
                                     <div className="flex flex-col sm:flex-row justify-between gap-4">
                                         <div className="space-y-1">
-                                            <h3 className="text-lg font-bold text-slate-800">{job.title}</h3>
-                                            <p className="text-sm text-slate-500 line-clamp-2">{job.description}</p>
+                                            <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">{job.title}</h3>
+                                            <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{job.description}</p>
                                         </div>
                                         <div className="flex sm:flex-col items-center sm:items-end gap-2 shrink-0">
                                             <Badge variant="success" className="flex items-center gap-1">
@@ -115,7 +115,7 @@ const DashboardEmployer = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <div className="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between text-xs text-slate-400">
+                                    <div className="mt-4 pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
                                         <span className="flex items-center gap-1"><Users size={12} /> 0 Applicants</span>
                                         <span className="flex items-center gap-1"><FileText size={12} /> Verified Profiles Only</span>
                                     </div>

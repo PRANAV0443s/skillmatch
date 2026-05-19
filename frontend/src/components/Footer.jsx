@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-white border-t border-gray-200 mt-auto">
+        <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto transition-colors">
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
@@ -11,14 +11,14 @@ const Footer = () => {
                             &copy; {new Date().getFullYear()} SkillMatch. All rights reserved.
                         </span>
                     </div>
-                    <div className="flex space-x-6 text-sm text-gray-500">
-                        <Link to="/terms" className="hover:text-blue-600 transition-colors">
+                    <div className="flex space-x-6 text-sm text-gray-500 dark:text-gray-400">
+                        <Link to="/terms" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             Terms of Service
                         </Link>
-                        <Link to="/privacy" className="hover:text-blue-600 transition-colors">
+                        <Link to="/privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             Privacy Policy
                         </Link>
-                        <Link to="/contact" className="hover:text-blue-600 transition-colors">
+                        <Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             Contact Us
                         </Link>
                     </div>

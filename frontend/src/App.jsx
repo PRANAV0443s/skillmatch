@@ -12,7 +12,7 @@ import Contact from './components/Contact';
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="min-h-screen bg-gray-50 transition-colors flex flex-col">
+            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors flex flex-col">
                 <Navbar />
                 <div className="flex-grow">
                     <Routes>

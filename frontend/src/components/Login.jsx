@@ -36,18 +36,18 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-slate-50">
+        <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-slate-950 transition-colors">
             <Card className="w-full max-w-md p-8 sm:p-10">
                 <div className="flex flex-col items-center mb-8">
                     <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-indigo-200">
                         S
                     </div>
-                    <h1 className="text-3xl font-bold text-slate-800 text-center">Welcome to SkillMatch</h1>
-                    <p className="text-slate-500 mt-2 text-center">Verified Hiring for Modern Teams</p>
+                    <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 text-center">Welcome to SkillMatch</h1>
+                    <p className="text-slate-500 dark:text-slate-400 mt-2 text-center">Verified Hiring for Modern Teams</p>
                 </div>
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl flex items-center animate-shake">
+                    <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/30 border border-red-100 dark:border-red-800 text-red-600 dark:text-red-400 text-sm rounded-xl flex items-center animate-shake">
                         {error}
                     </div>
                 )}
@@ -80,9 +80,9 @@ const Login = () => {
                 </form>
 
                 <div className="mt-8 pt-6 border-t border-slate-100 text-center">
-                    <p className="text-slate-600">
+                    <p className="text-slate-600 dark:text-slate-400">
                         Don't have an account? {' '}
-                        <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-semibold underline-offset-4 hover:underline">
+                        <Link to="/register" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-semibold underline-offset-4 hover:underline">
                             Create an account
                         </Link>
                     </p>
