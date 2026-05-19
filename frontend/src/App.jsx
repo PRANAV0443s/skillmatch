@@ -7,6 +7,7 @@ import DashboardEmployer from './components/DashboardEmployer';
 import TermsOfService from './components/TermsOfService';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                         <Route path="/employer" element={<DashboardEmployer />} />
                         <Route path="/terms" element={<TermsOfService />} />
                         <Route path="/privacy" element={<PrivacyPolicy />} />
+                        <Route path="/contact" element={<Contact />} />
                     </Routes>
                 </div>
                 <Footer />

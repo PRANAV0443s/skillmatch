@@ -41,7 +41,7 @@ const PrivacyPolicy = () => {
 
                 <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">6. Contact Us</h2>
                 <p className="mb-4">
-                    If you have any questions about this Privacy Policy, please contact us at support@skillmatch.com.
+                    If you have any questions about this Privacy Policy, please contact us at pathakpranav79@gmail.com.
                 </p>
             </div>
         </div>
