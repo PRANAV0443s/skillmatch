@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button, Input, Card } from './ui';
+import { API_BASE_URL } from '../config';
 
 const Register = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '', role: 'CANDIDATE' });
@@ -22,7 +23,7 @@ const Register = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://localhost:8080/api/auth/register', form);
+            await axios.post(`${API_BASE_URL}/api/auth/register`, form);
             setIsTransitioning(true);
             setTimeout(() => {
                 navigate('/login');

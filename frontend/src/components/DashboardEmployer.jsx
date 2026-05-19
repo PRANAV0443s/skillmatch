@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Card, Input, Badge } from './ui';
 import { PlusCircle, Briefcase, Users, FileText, CheckCircle, Search } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const DashboardEmployer = () => {
     const [jobs, setJobs] = useState([]);
@@ -14,7 +15,7 @@ const DashboardEmployer = () => {
 
     async function fetchJobs() {
         try {
-            const res = await axios.get('http://localhost:8080/api/jobs', {
+            const res = await axios.get(`${API_BASE_URL}/api/jobs`, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             setJobs(res.data);
@@ -26,7 +27,7 @@ const DashboardEmployer = () => {
         setLoading(true);
         try {
             const skillsArray = form.requiredSkills.split(',').map(s => s.trim()).filter(s => s !== '');
-            await axios.post('http://localhost:8080/api/jobs', { ...form, requiredSkills: skillsArray }, {
+            await axios.post(`${API_BASE_URL}/api/jobs`, { ...form, requiredSkills: skillsArray }, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             fetchJobs();

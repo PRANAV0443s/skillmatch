@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Card, Badge } from './ui';
 import { Upload, CheckCircle, Search, Briefcase, ShieldCheck, Clock } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const DashboardCandidate = () => {
     const [file, setFile] = useState(null);
@@ -18,7 +19,7 @@ const DashboardCandidate = () => {
 
     async function fetchProfile() {
         try {
-            const res = await axios.get('http://localhost:8080/api/candidate/profile', {
+            const res = await axios.get(`${API_BASE_URL}/api/candidate/profile`, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             setProfile(res.data);
@@ -27,7 +28,7 @@ const DashboardCandidate = () => {
 
     async function fetchJobs() {
         try {
-            const res = await axios.get('http://localhost:8080/api/jobs', {
+            const res = await axios.get(`${API_BASE_URL}/api/jobs`, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             setJobs(res.data);
@@ -36,7 +37,7 @@ const DashboardCandidate = () => {
 
     async function fetchAppliedJobs() {
         try {
-            const res = await axios.get('http://localhost:8080/api/candidate/applied-jobs', {
+            const res = await axios.get(`${API_BASE_URL}/api/candidate/applied-jobs`, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             setAppliedJobs(res.data);
@@ -45,7 +46,7 @@ const DashboardCandidate = () => {
 
     const handleApply = async (jobId) => {
         try {
-            await axios.post(`http://localhost:8080/api/candidate/apply/${jobId}`, {}, {
+            await axios.post(`${API_BASE_URL}/api/candidate/apply/${jobId}`, {}, {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             });
             alert('Application submitted successfully!');
@@ -61,7 +62,7 @@ const DashboardCandidate = () => {
         formData.append('file', file);
         setLoading(true);
         try {
-            await axios.post('http://localhost:8080/api/candidate/upload-resume', formData, {
+            await axios.post(`${API_BASE_URL}/api/candidate/upload-resume`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: 'Bearer ' + localStorage.getItem('token')
