@@ -26,10 +26,10 @@ const FloatingBackground = () => {
                 return (
                     <div 
                         key={idx} 
-                        className={`absolute opacity-[0.15] dark:opacity-[0.08] hover:opacity-[0.35] dark:hover:opacity-[0.25] transition-opacity duration-700 preserve-3d ${className}`}
+                        className={`absolute opacity-[0.35] dark:opacity-[0.18] hover:opacity-[0.55] dark:hover:opacity-[0.35] transition-opacity duration-700 preserve-3d ${className}`}
                     >
                         <div className={`${depth} transition-transform duration-500`}>
-                            <Icon size={size} strokeWidth={1.5} />
+                            <Icon size={size} strokeWidth={2.5} />
                         </div>
                     </div>
                 );
