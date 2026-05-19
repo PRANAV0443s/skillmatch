@@ -119,3 +119,26 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
 }
 
+@keyframes float-slow-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-24px) rotate(8deg) scale(1.06); }
+}
+@keyframes float-slow-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1.04); }
+  50% { transform: translateY(-36px) rotate(-12deg) scale(0.96); }
+}
+@keyframes float-slow-3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(0.98); }
+  50% { transform: translateY(-18px) rotate(6deg) scale(1.03); }
+}
+
+.animate-float-1 {
+  animation: float-slow-1 14s ease-in-out infinite;
+}
+.animate-float-2 {
+  animation: float-slow-2 18s ease-in-out infinite;
+}
+.animate-float-3 {
+  animation: float-slow-3 12s ease-in-out infinite;
+}
+

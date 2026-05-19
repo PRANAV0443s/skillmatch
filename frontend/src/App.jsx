@@ -8,13 +8,15 @@ import TermsOfService from './components/TermsOfService';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import FloatingBackground from './components/FloatingBackground';
 
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors flex flex-col">
+            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors flex flex-col relative">
+                <FloatingBackground />
                 <Navbar />
-                <div className="flex-grow">
+                <div className="flex-grow z-10">
                     <Routes>
                         <Route path="/" element={<Navigate to="/register" />} />
                         <Route path="/login" element={<Login />} />
