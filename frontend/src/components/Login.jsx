@@ -1,0 +1,96 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button, Input, Card } from './ui';
+
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            if (localStorage.getItem('role') === 'CANDIDATE') navigate('/candidate');
+            else navigate('/employer');
+        }
+    }, [navigate]);
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+        try {
+            const res = await axios.post('http://localhost:8080/api/auth/login', { email, password });
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('role', res.data.role);
+            localStorage.setItem('name', res.data.name);
+            if(res.data.role === 'CANDIDATE') navigate('/candidate');
+            else navigate('/employer');
+        } catch (error) {
+            setError(error.response?.data || 'Connection failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-slate-50">
+            <Card className="w-full max-w-md p-8 sm:p-10">
+                <div className="flex flex-col items-center mb-8">
+                    <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-indigo-200">
+                        S
+                    </div>
+                    <h1 className="text-3xl font-bold text-slate-800 text-center">Welcome to SkillMatch</h1>
+                    <p className="text-slate-500 mt-2 text-center">Verified Hiring for Modern Teams</p>
+                </div>
+
+                {error && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl flex items-center animate-shake">
+                        {error}
+                    </div>
+                )}
+
+                <form onSubmit={handleLogin} className="space-y-5">
+                    <Input 
+                        label="Email Address" 
+                        type="email" 
+                        placeholder="name@company.com" 
+                        value={email} 
+                        onChange={(e)=>setEmail(e.target.value)} 
+                        required 
+                    />
+                    <Input 
+                        label="Password" 
+                        type="password" 
+                        placeholder="••••••••" 
+                        value={password} 
+                        onChange={(e)=>setPassword(e.target.value)} 
+                        required 
+                    />
+                    
+                    <div className="flex justify-end pt-1">
+                        <button type="button" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">Forgot password?</button>
+                    </div>
+
+                    <Button type="submit" className="w-full h-12 text-base" loading={loading}>
+                        Sign In
+                    </Button>
+                </form>
+
+                <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+                    <p className="text-slate-600">
+                        Don't have an account? {' '}
+                        <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-semibold underline-offset-4 hover:underline">
+                            Create an account
+                        </Link>
+                    </p>
+                </div>
+            </Card>
+        </div>
+    );
+};
+
+export default Login;
+

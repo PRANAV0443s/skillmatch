@@ -1,0 +1,113 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "resumeHash",
+						"type": "string"
+					}
+				],
+				"name": "ResumeHashStored",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getResumeHash",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_hash",
+						"type": "string"
+					}
+				],
+				"name": "storeResumeHash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getResumeHash(address)": {
+					"details": "Retrieves the stored resume hash for a specific user",
+					"params": {
+						"_user": "The address of the user"
+					},
+					"returns": {
+						"_0": "The IPFS CID string"
+					}
+				},
+				"storeResumeHash(string)": {
+					"details": "Stores the IPFS CID hash of the user's resume",
+					"params": {
+						"_hash": "The IPFS CID string"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"SkillMatchVerification.sol": "SkillMatchVerification"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"SkillMatchVerification.sol": {
+			"keccak256": "0x913c955180e9f03340603477245d776db2cb84ef75a18676762f891e469e62a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9b604437fcf012e25a424109d58fce5c2efdfaa1d86e7d183d8b7a3dc1067a4",
+				"dweb:/ipfs/Qmaojc7pDy2LGPRk1RmVkiWoxE84GhwLo8ZcugtYhpZjys"
+			]
+		}
+	},
+	"version": 1
+}
