@@ -36,7 +36,7 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-slate-950 transition-colors">
+        <div className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-4 bg-transparent transition-colors">
             <Card className="w-full max-w-md p-8 sm:p-10">
                 <div className="flex flex-col items-center mb-8">
                     <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-indigo-200">
